@@ -1,6 +1,9 @@
 # _*_ coding:utf-8 *_*
 require 'nokogiri'
 require 'open-uri'
+require 'mysql2'
+
+client = Mysql2::Client.new(:host => "localhost", :username => "residence", :password => "residence_pass", :database => "residence_db")
 
 url = ''
 #pn ページ数
@@ -8,8 +11,11 @@ url = ''
 xml = Nokogiri::XML(open(url).read)
 #puts xml.xpath('/rss/channel')
 item_nodes = xml.xpath('//item')
+count = 0
 item_nodes.each do |item|
-  #puts item.xpath('title').text
-  #puts item.xpath('link').text
-  des = item.xpath('description').text
+  count += 1
+  title = item.xpath('title').text
+  link = item.xpath('link').text
+  description = item.xpath('description').text
+  client.query("INSERT INTO residence(id, url, description) VALUES (#{count},'#{link}', '#{description}')")
 end
