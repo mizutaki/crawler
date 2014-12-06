@@ -1,0 +1,41 @@
+<html lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Untitled Document</title>
+    </head>
+    <body>
+    	<table border="1">
+    	<th>詳細</th>
+    	<th>バス・徒歩</th>	
+    	<th>賃料管理費・共益費</th>
+    	<th>敷金・礼金</th>
+    	<th>間取り</th>
+    	<th>方位</th>
+    	<th>築年</th>
+    	<th>不動参会社名</th>
+    	<th>不動参会社電話番号</th>
+    	<% @residence_info.each do |residence| %>
+    	<tr>
+    		<td><input id="details" type="button" value="詳細" onClick="show_details('<%= residence['url'] %>')" /></td>
+    		<td><%= residence['warking_time'] %></td>
+    		<td><%= residence['rent'] %></td>
+    		<td><%= residence['deposit'] %></td>
+    		<td><%= residence['layout'] %></td>
+    		<td><%= residence['azimuth'] %></td>
+    		<td><%= residence['building_year'] %></td>
+    		<td><%= residence['real_estate_company_name'] %></td>
+    		<td><%= residence['real_estate_company_phonenumber'] %></td>
+    	</tr>	
+    	<% end %>
+    </table>
+    <script>
+    function show_details(url) {
+    	var xmlHttp = new XMLHttpRequest();
+    	var request_url = '/details/'+ url;
+    	xmlHttp.open("GET", request_url, true);
+    	xmlHttp.send(null);
+    	console.log(xmlHttp.statusText);
+    }
+    </script>
+    </body>
+</html>
