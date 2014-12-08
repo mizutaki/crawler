@@ -5,7 +5,7 @@ require 'mysql2'
 =begin
 client = Mysql2::Client.new(:host => "localhost", :username => "residence", :password => "residence_pass", :database => "residence_db")
 
-url = 'http://bridal.suumo.jp/jj/chintai/ichiran/FR301FC001/?ta=14&ekInput=04940&ekInput=05090&ar=030&bs=040&nk=-1&nk=-1&tj=50&tj=40&rssFlg=1'
+url = ''
 #pn ページ数
 #pc 表示件数 10,20,30,50,100
 xml = Nokogiri::XML(open(url).read)

@@ -32,9 +32,9 @@
     function show_details(url) {
     	var xmlHttp = new XMLHttpRequest();
     	var request_url = '/details/'+ url;
-    	xmlHttp.open("GET", request_url, true);
+    	xmlHttp.open("GET", request_url, false);
     	xmlHttp.send(null);
-    	console.log(xmlHttp.statusText);
+    	console.log(xmlHttp.responseText);
     }
     </script>
     </body>
