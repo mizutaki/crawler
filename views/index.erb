@@ -28,13 +28,18 @@
     	</tr>	
     	<% end %>
     </table>
+    <div id="details_result">
+    </div>
     <script>
     function show_details(url) {
     	var xmlHttp = new XMLHttpRequest();
     	var request_url = '/details/'+ url;
+        console.log(url);
     	xmlHttp.open("GET", request_url, false);
     	xmlHttp.send(null);
+        var details = document.getElementById('details_result');
     	console.log(xmlHttp.responseText);
+        details.innerHTML = xmlHttp.responseText;
     }
     </script>
     </body>
