@@ -2,6 +2,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Untitled Document</title>
+        <style type="text/css">
+            .open {
+                clear: left;
+                margin: 0 6px 6px;
+                overflow: hidden;
+                width: 809px;
+                background-color: blue;
+            }
+        </style>
     </head>
     <body>
     	<table border="1">
@@ -28,7 +37,7 @@
     	</tr>	
     	<% end %>
     </table>
-    <div id="details_result">
+    <div id="details_result" style="DISPLAY:none;POSITION:absolute;LEFT:80;TOP:40;" class="close" draggable="true">
     </div>
     <script>
     function show_details(url) {
@@ -38,6 +47,10 @@
     	xmlHttp.open("GET", request_url, false);
     	xmlHttp.send(null);
         var details = document.getElementById('details_result');
+        if (details.className=='close') {
+            details.style.display = 'block';
+            details.className = 'open';
+        }
     	console.log(xmlHttp.responseText);
         details.innerHTML = xmlHttp.responseText;
     }
